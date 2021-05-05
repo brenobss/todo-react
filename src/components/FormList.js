@@ -1,5 +1,6 @@
 import List from './List';
 import { useState } from 'react';
+import Item from '../classes/Item';
 
 function FormList() {
     const [text, setText] = useState("");
@@ -7,8 +8,26 @@ function FormList() {
 
     function addItem(event) {
         event.preventDefault()
-        setItems([...items, text])
+        const item = new Item(text)
+
+        setItems([...items, item])
         setText("")
+    }
+
+    function deleteItem(item) {
+        const filteredItems = items.filter(it => it.id !== item.id)
+
+        setItems(filteredItems)
+    }
+
+    function onDone(item) {
+        const updatedItems = items.map((it) => {
+            if (it.id === item.id) {
+                it.isDone = !it.isDone;
+            }
+            return it;
+        })
+        setItems(updatedItems);
     }
 
     return (
@@ -23,7 +42,7 @@ function FormList() {
                 </input>
                 <button onClick={addItem}>Add</button>
             </form>
-            <List items={items}></List>
+            <List items={items} deleteItem={deleteItem} onDone={onDone}></List>
         </div>
     )
 }
