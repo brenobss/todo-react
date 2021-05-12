@@ -5,11 +5,11 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '100%',
-        fontSize: 30,
-        padding: 15,
+        fontSize: 20,
+        padding: 20,
         marginTop: 15,
-        boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.2)'
+        boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.2)',
+        backgroundColor: 'white',
     }
 });
 

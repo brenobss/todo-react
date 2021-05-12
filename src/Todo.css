@@ -3,3 +3,35 @@ ul{
     margin: 0;
     list-style: none;
 }
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addButton{
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    background-color: blue;
+    color: white;
+    border-radius: 25px;
+}
+
+.hide{
+    display: none;
+}
+
+.modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

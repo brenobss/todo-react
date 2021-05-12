@@ -5,7 +5,7 @@ import './Todo.css';
 const useStyles = makeStyles({
     container: {
         margin: 'auto',
-        maxWidth: 450,
+        maxWidth: 600,
     }
 })
 
@@ -14,9 +14,7 @@ function Todo() {
 
     return (
         <div className={classes.container}>
-            <h1>Todo</h1>
             <FormList></FormList>
-
         </div>
     )
 }
