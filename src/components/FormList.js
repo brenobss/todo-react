@@ -17,6 +17,7 @@ function FormList() {
 
         setItems([...items, item])
         setText("")
+        setShowModal(false)
     }
 
     function deleteItem(item) {
@@ -47,11 +48,9 @@ function FormList() {
         localStorage.setItem(SAVED_ITEMS, JSON.stringify(items))
     }, [items])
 
-    function onHideModal(e) {
-        let target = e.target;
-        if (target.id === "modal") {
-            setShowModal(false);
-        }
+    function onHideModal() {
+        setShowModal(false);
+
     }
 
     return (
