@@ -54,9 +54,9 @@ function FormList() {
     }
 
     return (
-        <div>
+        <div class="formList">
             <header>
-                <h1>Todo</h1>
+                <h1>To Do</h1>
                 <button className="addButton" onClick={() => { setShowModal(true) }}>+</button>
             </header>
             <List items={items} deleteItem={deleteItem} onDone={onDone}></List>
