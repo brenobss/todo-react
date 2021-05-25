@@ -1,20 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
+import { hideModal } from "../actions/modalAction";
 import Card from "./Card";
+import Form from "./Form";
 
-function Modal(props) {
+function Modal() {
 
-    function hideModal(e) {
+    const dispatch = useDispatch()
+
+    const showModal = useSelector(state => state.modal)
+
+    function onHideModal(e) {
         let target = e.target;
         if (target.id === "modal") {
-            props.onHideModal();
+            dispatch(hideModal())
         }
     }
 
     return (
-        <div id="modal" onClick={hideModal} className={props.show ? "modal" : "hide"}>
+        <div id="modal" onClick={onHideModal} className={showModal ? "modal" : "hide"}>
             <Card className="cardModal">
-                {
-                    props.children
-                }
+                <Form></Form>
             </Card>
         </div >
     )

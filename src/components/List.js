@@ -1,11 +1,13 @@
+import { useSelector } from 'react-redux';
 import ListItem from './ListItem';
 
 
-function List(props) {
+function List() {
+    const items = useSelector(state => state.list)
     return (
         <ul>
-            {props.items.map((item) =>
-                <ListItem key={item.id} item={item} onDone={props.onDone} deleteItem={props.deleteItem}></ListItem>
+            {items.map((item) =>
+                <ListItem key={item.id} item={item}></ListItem>
             )}
         </ul>
     )

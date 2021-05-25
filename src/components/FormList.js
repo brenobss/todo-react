@@ -1,78 +1,26 @@
 import List from './List';
-import { useEffect, useState } from 'react';
-import Item from '../classes/Item';
 import Modal from './Modal';
-
-const SAVED_ITEMS = "savedItems";
+import { useDispatch } from 'react-redux';
+import { showModal } from '../actions/modalAction';
 
 function FormList() {
-    const [text, setText] = useState("");
-    const [items, setItems] = useState([]);
 
-    const [showModal, setShowModal] = useState(false);
+    const dispatch = useDispatch();
 
-    function addItem(event) {
-        event.preventDefault()
-        const item = new Item(text)
-
-        setItems([...items, item])
-        setText("")
-        setShowModal(false)
-    }
-
-    function deleteItem(item) {
-        const filteredItems = items.filter(it => it.id !== item.id)
-
-        setItems(filteredItems)
-    }
-
-    function onDone(item) {
-        const updatedItems = items.map((it) => {
-            if (it.id === item.id) {
-                it.isDone = !it.isDone;
-            }
-            return it;
-        })
-        setItems(updatedItems);
-    }
-
-    useEffect(() => {
-        let savedItems = JSON.parse(localStorage.getItem(SAVED_ITEMS))
-        if (savedItems) {
-            setItems(savedItems);
-        }
-
-    }, [])
-
-    useEffect(() => {
-        localStorage.setItem(SAVED_ITEMS, JSON.stringify(items))
-    }, [items])
-
-    function onHideModal() {
-        setShowModal(false);
-
-    }
 
     return (
-        <div class="formList">
+
+        <div className="formList">
             <header>
                 <h1>To Do</h1>
-                <button className="addButton" onClick={() => { setShowModal(true) }}>+</button>
+                <button className="addButton" onClick={() => { dispatch(showModal()) }}>+</button>
             </header>
-            <List items={items} deleteItem={deleteItem} onDone={onDone}></List>
-            <Modal show={showModal} onHideModal={onHideModal}>
-                <form>
-                    <input
-                        type="text"
-                        onChange={(event) => { setText(event.target.value) }}
-                        value={text}
-                    >
+            <List></List>
+            <Modal>
 
-                    </input>
-                    <button onClick={addItem}>Add</button>
-                </form>
             </Modal>
-        </div>
+        </div >
+
     )
 }
 
