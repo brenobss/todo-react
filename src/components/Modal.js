@@ -18,7 +18,7 @@ function Modal() {
 
     return (
         <div id="modal" onClick={onHideModal} className={showModal ? "modal" : "hide"}>
-            <Card className="cardModal">
+            <Card>
                 <Form></Form>
             </Card>
         </div >
