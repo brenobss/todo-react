@@ -3,7 +3,13 @@ export default function listReducer(state = [], action) {
         case "ADD_ITEM":
             return [...state, action.payload]
         case "DELETE_ITEM":
-            return state.filter(item => item.id !== action.payload)
+            const newItems = state.filter(item => item.id !== action.payload)
+            let counter = 0;
+            return newItems.map(item => {
+                item.id = counter;
+                counter++;
+                return item;
+            })
         case "CHANGE_DONE":
             return state.map(item => {
                 if (item.id === action.payload) {
