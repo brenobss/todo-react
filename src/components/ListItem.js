@@ -1,21 +1,13 @@
-import { makeStyles } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Card from './Card';
 import { useDispatch } from 'react-redux';
 import { changeDone, deleteItem } from '../actions/listAction';
 
-const useStyles = makeStyles({
-    btnCheck: {
-        color: 'blue'
-    },
-})
-
 function BtnCheck(props) {
-    const classes = useStyles();
     if (props.done) {
         return (
-            <CheckCircleIcon className={classes.btnCheck} />
+            <CheckCircleIcon className="btnCheck" />
         )
     } else {
         return (
@@ -32,10 +24,12 @@ function ListItem(props) {
                 {props.item.text}
                 <div>
                     <button
+                        className="btn"
                         onClick={() => { dispatch(changeDone(props.item.id)) }}>
                         <BtnCheck done={props.item.isDone} />
                     </button>
                     <button
+                        className="btn trash"
                         onClick={() => { dispatch(deleteItem(props.item.id)) }}>
                         <DeleteForeverIcon />
                     </button>
